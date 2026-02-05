@@ -1,0 +1,34 @@
+/* src/style.css */
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-primary: #265984;
+
+  /* #2d74aa: Warna Kedua (Biasanya untuk elemen interaktif sekunder/Link) */
+  --color-secondary: #2d74aa;
+
+  /* #f2c126: Warna Aksen (Emas - bagus untuk tombol 'Beli' atau highlight) */
+  --color-accent: #f2c126;
+
+  /* #ffcc02: Kuning Terang (Bisa untuk hover state aksen atau notifikasi warning) */
+  --color-highlight: #ffcc02;
+  /* #1e3a8a: Biru Gelap (Bagus untuk teks atau latar belakang footer) */
+  --color-dark-blue: #1e3a8a;
+  
+  /* Backgrounds */
+  --color-surface: #f8fafc;   /* Slate 50 */
+  --color-surface-hover: #f1f5f9;
+
+  /* Fonts */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif; /* Good for Headings if we want a 'Legal' feel */
+}
+
+/* Base styles */
+html {
+  @apply scroll-smooth;
+}
+body {
+  @apply bg-surface text-primary font-sans antialiased;
+}
