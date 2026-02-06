@@ -3,12 +3,58 @@ import { ref, computed } from 'vue' // Don't forget to import computed!
 
 export const useMainStore = defineStore('legal', () => {
   // STATE (Data Stored)
-  const companyInfo = ref({
-    name: 'LegalDK',
-    description: 'Consulting services for business legality and licensing.',
+  const companyProfile = ref({
+    name: 'LegaLDK',
+    tagline: 'Mitra Legalitas Terpercaya.',
+    description: 'LegaLDK adalah konsultan legalitas yang berdedikasi membantu pengusaha Indonesia, mulai dari UMKM hingga korporasi, untuk mendapatkan kepastian hukum dalam berbisnis.',
+    story: 'Didirikan pada tahun 2023, kami bermula dari sebuah inisiatif kecil untuk menyederhanakan birokrasi bagi teman-teman UMKM. Kini, kami telah membantu lebih dari 500 badan usaha mendapatkan izin resmi.',
+    vision: 'Menjadi platform layanan legalitas digital nomor 1 di Indonesia yang paling transparan dan mudah diakses.',
+    mission: [
+      'Menyederhanakan proses birokrasi yang rumit.',
+      'Memberikan edukasi hukum yang mudah dipahami.',
+      'Menawarkan biaya yang transparan tanpa pungutan liar.'
+    ],
+    stats: [
+        { label: 'Klien Terbantu', value: '500+' },
+        { label: 'Izin Terbit', value: '1,200+' },
+        { label: 'Tahun Pengalaman', value: '3+' },
+      ]
+  });
+
+  const contactInfo = ref({
+    address: 'Jl. Jendral Sudirman No. Kav 52, Jakarta Selatan, DKI Jakarta',
     phone: '+62 812-3456-7890',
-    email: 'info@legaldarikita.com'
-  })
+    email: 'info@legaldarikita.com',
+    whatsappUrl: 'https://wa.me/6281234567890',
+    googleMapsEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.29798263597!2d106.808779314769!3d-6.223287995493976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f14d796c827d%3A0x2d1702e5c8c5f59c!2sSudirman%20Central%20Business%20District!5e0!3m2!1sen!2sid!4v1622606677890!5m2!1sen!2sid'
+  });
+
+  const team = ref([
+    {
+      id: 1,
+      name: 'Dimas Rizqia',
+      role: 'CEO & Founder',
+      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400'
+    },
+    {
+      id: 2,
+      name: 'Sarah Amalia',
+      role: 'Head of Legal',
+      image: 'https://images.unsplash.com/photo-1573496359-0cf7429f6da3?auto=format&fit=crop&q=80&w=400'
+    },
+    {
+      id: 3,
+      name: 'Budi Santoso',
+      role: 'Senior Consultant',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400'
+    },
+    {
+      id: 4,
+      name: 'Reza Rahardian',
+      role: 'Tech Lead',
+      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400'
+    }
+  ]);
 
   const services = ref([
     {
@@ -81,7 +127,7 @@ export const useMainStore = defineStore('legal', () => {
       price: 'Rp 4.000.000',
       icon: 'Sprout'
     }
-  ])
+  ]);
 
   const articles = ref([
     {
@@ -140,7 +186,9 @@ export const useMainStore = defineStore('legal', () => {
 
 // Return Components
   return {
-    companyInfo,
+    companyProfile,
+    contactInfo,
+    team,
     services,
     articles,
     latestArticles,

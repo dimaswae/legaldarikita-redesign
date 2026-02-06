@@ -3,14 +3,18 @@ import { createRouter, createWebHistory } from 'vue-router';
 // Lazy load components for performance
 const Home = () => import('../views/HomeView.vue');
 const Layanan = () => import('../views/LayananView.vue');
+const TentangKami = () => import('../views/TentangKamiView.vue');
 
 // Testing Page
-const App = () => import('../views/TestAppView.vue');
+// const App = () => import('../views/TestAppView.vue');
 
 const routes = [
   { path: '/',
     name: 'Home',
     component: Home },
+  { path: '/tentang-kami',
+    name: 'TentangKami',
+    component: TentangKami },
   { path: '/layanan',
     name: 'Layanan',
     component: Layanan },
