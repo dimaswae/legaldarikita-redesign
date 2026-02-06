@@ -1,7 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router';
 import Navbar from '@/layouts/NavBar.vue';
-// import Footer from '@/components/layout/Footer.vue'; // Uncomment when created
+import Footer from '@/layouts/FooterLayout.vue';
 </script>
 
 <template>
@@ -19,10 +19,8 @@ import Navbar from '@/layouts/NavBar.vue';
       </slot>
     </main>
 
-    <footer class="bg-primary text-white py-8 mt-12">
-      <div class="container mx-auto px-4 text-center">
-        <p class="text-sm opacity-80">&copy; 2026 LegalDK. All rights reserved.</p>
-      </div>
+    <footer>
+      <Footer />
     </footer>
 
   </div>

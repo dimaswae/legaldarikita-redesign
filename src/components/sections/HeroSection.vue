@@ -11,7 +11,7 @@ const benefits = ['Proses 100% Online', 'Jaminan Legalitas Resmi', 'Harga Transp
 </script>
 
 <template>
-  <section class="relative pt-4 pb-16 lg:pt-8 lg:pb-24 overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
+  <section class="relative pt-4 pb-2 lg:pt-8 lg:pb-6 overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50">
 
     <BaseContainer>
       <div class="grid lg:grid-cols-2 gap-12 items-center">
