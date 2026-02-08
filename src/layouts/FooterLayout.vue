@@ -1,5 +1,7 @@
 <script setup>
 import BaseContainer from '@/components/ui/BaseContainer.vue';
+// import { useRoute } from 'vue-router';
+
 import {
   Instagram,
   Linkedin,
@@ -7,30 +9,30 @@ import {
   MapPin,
   Phone,
   Mail,
-  Scale,
   ArrowRight
 } from 'lucide-vue-next';
 
+// const route = useRoute();
+
 const socialLinks = [
-  { icon: Instagram, href: '#' },
-  { icon: Linkedin, href: '#' },
-  { icon: Facebook, href: '#' }
+  { icon: Instagram, href: 'https://www.instagram.com/legaldarikita' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/company/legaldarikita' },
+  { icon: Facebook, href: 'https://www.facebook.com/legaldarikita' }
 ];
 
 const quickLinks = [
   { name: 'Home', to: '/' },
-  { name: 'Tentang Kami', to: '/about' },
+  { name: 'Tentang Kami', to: '/tentang-kami' },
   { name: 'Layanan', to: '/layanan' },
   { name: 'Artikel', to: '/artikel' },
   { name: 'Kontak', to: '/contact' }
 ];
 
 const popularServices = [
-  { name: 'Pendirian PT', to: '/layanan/pt-creation' },
+  { name: 'Pendirian PT', to: '/layanan/pt-premium' },
   { name: 'PT Perorangan', to: '/layanan/pt-perorangan' },
-  { name: 'Pendirian CV', to: '/layanan/cv-creation' },
-  { name: 'Pendaftaran Merek', to: '/layanan/haki' },
-  { name: 'Izin NIB / OSS', to: '/layanan/nib' }
+  { name: 'Pendirian CV', to: '/layanan/cv-premium' },
+  { name: 'Pendirian Yayasan', to: '/layanan/yayasan' }
 ];
 </script>
 
@@ -42,9 +44,11 @@ const popularServices = [
 
           <div class="space-y-6">
             <div class="flex items-center gap-2 text-white">
-              <div class="bg-blue-600 p-1.5 rounded-lg">
-                <Scale :size="24" class="text-white" />
-              </div>
+              <img
+                src="@/assets/logo-legaldk-logoonly-removed.png"
+                alt="LegalDK Logo"
+                class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
               <span class="font-bold text-xl tracking-tight">
                 Legal<span class="text-blue-500">DK</span>
               </span>
@@ -60,6 +64,7 @@ const popularServices = [
                 :key="index"
                 :href="social.href"
                 class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300"
+                target="_blank"
               >
                 <component :is="social.icon" :size="20" />
               </a>
@@ -101,19 +106,18 @@ const popularServices = [
               <li class="flex items-start gap-3">
                 <MapPin :size="20" class="text-blue-500 shrink-0 mt-0.5" />
                 <span class="leading-relaxed">
-                  Jl. Jendral Sudirman No. Kav 52,<br />
-                  Jakarta Selatan, DKI Jakarta
+                  Jl. Riung Purna I No.17, <br /> Cisaranten Kidul, Kec. Gedebage, Kota Bandung, Jawa Barat 40295.
                 </span>
               </li>
               <li class="flex items-center gap-3">
                 <Phone :size="20" class="text-blue-500 shrink-0" />
-                <a href="tel:+6281234567890" class="hover:text-white transition-colors">
-                  +62 812-3456-7890
+                <a href="tel:+6285520912043" class="hover:text-white transition-colors">
+                  +62 855-2091-2043
                 </a>
               </li>
               <li class="flex items-center gap-3">
                 <Mail :size="20" class="text-blue-500 shrink-0" />
-                <a href="mailto:info@legaldk.com" class="hover:text-white transition-colors">
+                <a href="mailto:info@legaldarikita.com" class="hover:text-white transition-colors">
                   info@legaldarikita.com
                 </a>
               </li>
@@ -129,6 +133,7 @@ const popularServices = [
         <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>&copy; 2026 LegaLDK Indonesia. All rights reserved.</p>
           <div class="flex gap-6">
+            <!-- Privasi dan Term Belum ada -->
             <router-link to="/privacy" class="hover:text-slate-300">Privacy Policy</router-link>
             <router-link to="/terms" class="hover:text-slate-300">Terms of Service</router-link>
           </div>

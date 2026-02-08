@@ -3,10 +3,10 @@ import BaseContainer from '@/components/ui/BaseContainer.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import { ArrowRight, CheckCircle2 } from 'lucide-vue-next';
 
-// H-03: Dummy Trust Indicators
-const clients = ['StartUp Indo', 'Kopi Kenangan', 'Tech Solutions', 'Legal Corp', 'Niaga Hoster'];
+// Dummy Trust Indicators
+const clients = ['StartUp Indo', 'Tech Solutions', 'Legal Corp', 'Niaga Hoster'];
 
-// Selling points for the checklist
+// Selling points for hero section
 const benefits = ['Proses 100% Online', 'Jaminan Legalitas Resmi', 'Harga Transparan'];
 </script>
 
@@ -33,7 +33,7 @@ const benefits = ['Proses 100% Online', 'Jaminan Legalitas Resmi', 'Harga Transp
           </h1>
 
           <p class="text-lg text-slate-600 max-w-xl leading-relaxed">
-            Fokus pada pengembangan bisnis Anda, biarkan kami yang mengurus izin PT, CV, dan HAKI. Cepat, resmi, dan terpercaya.
+            Solusi Urus Legal Usaha dengan Mudah, Hemat, dan Cepat. <br /> Didukung oleh tim profesional dan berpengalaman, kami siap memastikan legalitas bisnis Anda aman, sah, dan sesuai regulasi yang berlaku.
           </p>
 
           <ul class="flex flex-col sm:flex-row gap-4 text-slate-700 font-medium">
@@ -68,8 +68,8 @@ const benefits = ['Proses 100% Online', 'Jaminan Legalitas Resmi', 'Harga Transp
 
           <div class="relative bg-white p-4 rounded-2xl shadow-2xl border border-slate-100 transform rotate-2 hover:rotate-0 transition-transform duration-500">
             <img
-              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80"
-              alt="Team Meeting"
+              src="@/assets/logo-legaldk.png"
+              alt="Logo LegalDK"
               class="rounded-xl object-cover w-full h-[500px]"
             />
 
@@ -79,7 +79,7 @@ const benefits = ['Proses 100% Online', 'Jaminan Legalitas Resmi', 'Harga Transp
               </div>
               <div>
                 <p class="text-sm text-slate-500">Izin Terbit</p>
-                <p class="font-bold text-slate-900">1,200+ Dokumen</p>
+                <p class="font-bold text-slate-900">1,000+ Dokumen</p>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ const benefits = ['Proses 100% Online', 'Jaminan Legalitas Resmi', 'Harga Transp
 </template>
 
 <style scoped>
-/* Custom animation utility not in Tailwind default */
+/* Custom animation utility*/
 .animate-bounce-slow {
   animation: bounce 3s infinite;
 }

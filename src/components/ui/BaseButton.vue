@@ -12,6 +12,10 @@ const props = defineProps({
     default: 'md',
     validator: (value) => ['sm', 'md', 'lg'].includes(value)
   },
+  href: {
+    type: String,
+    default: null
+  },
   to: {
     type: String,
     default: null
@@ -27,7 +31,7 @@ const variantClasses = {
   secondary: "bg-secondary text-white hover:bg-secondary/90 focus:ring-secondary shadow-lg shadow-blue-500/30",
   outline: "border-2 border-primary text-primary hover:bg-primary/5",
   ghost: "text-gray-600 hover:text-primary hover:bg-gray-100",
-  white: "bg-white text-primary hover:bg-gray-50 shadow-sm" // Good for Hero over dark images
+  white: "bg-white text-primary hover:bg-gray-50 shadow-sm" // buat bg gelap
 };
 
 const sizeClasses = {
@@ -46,11 +50,20 @@ const classes = computed(() => {
 });
 
 // Determine tag type (RouterLink or Button)
-const tag = computed(() => props.to ? 'router-link' : 'button');
+const tag = computed(() => {
+  if (props.to) return 'router-link';
+  if (props.href) return 'a';
+  return 'button';
+});
 </script>
 
 <template>
-  <component :is="tag" :to="to" :class="classes">
+  <component
+    :is="tag"
+    :to="to"
+    :href="href"
+    :class="classes"
+    >
     <slot />
   </component>
 </template>

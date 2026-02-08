@@ -24,9 +24,9 @@ import BaseButton from '@/components/ui/BaseButton.vue';
           <BaseButton
             variant="secondary"
             size="lg"
-            href="https://wa.me/6281234567890"
+            :href="'https://wa.me/6285520912043?text=' + encodeURIComponent('Halo LegalDK, saya tertarik untuk konsultasi legalitas bisnis.')"
             target="_blank"
-            class="shadow-xl shadow-orange-500/20"
+            class="shadow-xl"
           >
             Hubungi via WhatsApp
           </BaseButton>

@@ -70,7 +70,7 @@ const iconMap = {
             <span class="text-sm font-semibold text-primary opacity-80">{{ service.price }}</span>
 
             <router-link
-              :to="`/layanan/${service.id}`"
+              :to="`/layanan/${service.slug }`"
               class="inline-flex items-center text-sm font-medium text-secondary hover:text-blue-700 transition-colors"
             >
               Detail

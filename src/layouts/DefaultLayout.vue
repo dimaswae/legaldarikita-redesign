@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router';
 import Navbar from '@/layouts/NavBar.vue';
 import Footer from '@/layouts/FooterLayout.vue';
+import WhatsAppButton from '@/components/ui/WhatsappButton.vue';
 </script>
 
 <template>
@@ -23,5 +24,18 @@ import Footer from '@/layouts/FooterLayout.vue';
       <Footer />
     </footer>
 
+    <WhatsAppButton />
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

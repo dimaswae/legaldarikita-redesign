@@ -1,12 +1,12 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
-import { Menu, X, Scale } from 'lucide-vue-next'; // Ensure you installed lucide-vue-next
+import { Menu, X} from 'lucide-vue-next'; // Ensure you installed lucide-vue-next
 import BaseContainer from '@/components/ui/BaseContainer.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 
 const isScrolled = ref(false);
-const isMobileMenuOpen = ref(false);
+const isMenuOpen = ref(false);
 const route = useRoute();
 
 const navLinks = [
@@ -19,6 +19,10 @@ const navLinks = [
 // Handle Scroll Effect
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 20;
+};
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
 };
 
 onMounted(() => {
@@ -34,23 +38,26 @@ onUnmounted(() => {
   <nav
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
     :class="[
-      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+      isScrolled || isMenuOpen ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-4'
     ]"
   >
     <BaseContainer>
       <div class="flex items-center justify-between">
 
-        <RouterLink to="/" class="flex items-center gap-2 group">
-          <div class="bg-primary text-white p-2 rounded-lg group-hover:bg-secondary transition-colors">
-            <Scale :size="24" />
-          </div>
-          <span
-            class="font-bold text-xl tracking-tight"
-            :class="isScrolled ? 'text-primary' : 'text-primary'"
-          >
-            Legal<span class="text-secondary">DK</span>
-          </span>
-        </RouterLink>
+        <RouterLink to="/" class="flex items-center gap-2 group z-50 relative">
+        <img
+          src="@/assets/logo-legaldk-logoonly-removed.png"
+          alt="LegalDK Logo"
+          class="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+        />
+
+        <span
+          class="font-bold text-xl tracking-tight transition-colors"
+          :class="(isScrolled || isMenuOpen) ? 'text-primary' : 'text-primary'"
+        >
+          Legal<span class="text-secondary">DK</span>
+        </span>
+      </RouterLink>
 
         <div class="hidden md:flex items-center gap-8">
           <RouterLink
@@ -68,27 +75,51 @@ onUnmounted(() => {
           </BaseButton>
         </div>
 
-        <button class="md:hidden text-slate-700" @click="isMobileMenuOpen = !isMobileMenuOpen">
-          <X v-if="isMobileMenuOpen" />
-          <Menu v-else />
+        <button
+          @click="toggleMenu"
+          class="md:hidden text-primary focus:outline-none z-50 relative"
+          aria-label="Toggle Menu"
+        >
+          <X v-if="isMenuOpen" :size="28" />
+          <Menu v-else :size="28" />
         </button>
       </div>
+    </BaseContainer>
 
-      <div v-if="isMobileMenuOpen" class="md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 flex flex-col p-4 gap-4 animate-in slide-in-from-top-2">
-        <RouterLink
+    <transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0 -translate-y-2"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-2"
+    >
+      <div
+        v-if="isMenuOpen"
+        class="absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 p-6 flex flex-col gap-4 md:hidden"
+      >
+        <router-link
           v-for="link in navLinks"
           :key="link.path"
           :to="link.path"
-          class="text-base font-medium text-slate-700 py-2 border-b border-slate-100"
-          @click="isMobileMenuOpen = false"
+          @click="isMenuOpen = false"
+          class="text-lg font-medium text-slate-600 py-3 border-b border-slate-50 hover:text-primary hover:pl-2 transition-all"
+          :class="route.path === link.path ? 'text-primary font-bold pl-2 border-l-4 border-l-secondary' : ''"
         >
           {{ link.name }}
-        </RouterLink>
-        <BaseButton variant="primary" block to="/contact" @click="isMobileMenuOpen = false">
-          Konsultasi Gratis
-        </BaseButton>
-      </div>
+        </router-link>
 
-    </BaseContainer>
+        <div class="pt-4">
+          <BaseButton
+            to="/contact"
+            class="w-full justify-center shadow-lg shadow-blue-500/20"
+            @click="isMenuOpen = false"
+          >
+            Konsultasi Sekarang
+          </BaseButton>
+        </div>
+      </div>
+    </transition>
+
   </nav>
 </template>
