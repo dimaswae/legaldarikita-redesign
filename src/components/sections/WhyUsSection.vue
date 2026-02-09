@@ -1,7 +1,13 @@
 <script setup>
+import { onMounted, nextTick } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import BaseContainer from '@/components/ui/BaseContainer.vue';
 import SectionHeader from '@/components/ui/SectionHeader.vue';
 import { BadgeCheck, Zap, Users, ShieldCheck } from 'lucide-vue-next';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   {
@@ -15,7 +21,7 @@ const features = [
     title: 'Selesai dalam 3-6 Hari',
     desc: 'Waktu Anda berharga. Kami memberikan estimasi waktu yang jelas dan mengeksekusi pengurusan izin seefisien mungkin.',
     icon: Zap,
-    color: 'text-amber-600', // Warning/Alert color implies urgency/speed
+    color: 'text-amber-600',
     bg: 'bg-amber-50'
   },
   {
@@ -33,17 +39,49 @@ const features = [
     bg: 'bg-indigo-50'
   }
 ];
+
+onMounted(async () => {
+  await nextTick(); // Wait DOM
+
+  const cards = gsap.utils.toArray('.why-card-anim');
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.why-us-trigger',
+      start: 'top 85%',
+    }
+  });
+
+  // Header Animation
+  tl.fromTo('.why-header-anim',
+    { y: 30, autoAlpha: 0 }, // Start State
+    { y: 0, autoAlpha: 1, duration: 0.8, ease: 'power3.out' } // End State
+  )
+
+  // Cards Animation
+  .fromTo(cards,
+    { y: 50, autoAlpha: 0 }, // Start State
+    {
+      y: 0,
+      autoAlpha: 1,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'back.out(1.2)'
+    },
+    '-=0.4' // Overlap
+  );
+});
 </script>
 
 <template>
-  <section class="py-24 bg-surface relative overflow-hidden">
+  <section class="why-us-trigger py-24 bg-surface relative overflow-hidden">
     <BaseContainer>
 
       <SectionHeader
         title="Mengapa Memilih LegaLDK?"
         subtitle="Jangan biarkan masalah administrasi menghambat pertumbuhan bisnis Anda."
         align="center"
-        class="mb-16"
+        class="why-header-anim mb-16"
       />
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -51,7 +89,7 @@ const features = [
         <div
           v-for="(feature, index) in features"
           :key="index"
-          class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+          class="why-card-anim bg-white rounded-2xl p-6 shadow-sm border border-slate-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
         >
           <div
             class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors"

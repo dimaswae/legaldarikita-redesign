@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue' // Don't forget to import computed!
+import { ref, computed } from 'vue'
 
 export const useMainStore = defineStore('legal', () => {
   // STATE (Data Stored)
@@ -16,7 +16,7 @@ export const useMainStore = defineStore('legal', () => {
     ],
     stats: [
         { label: 'Klien Terbantu', value: '500+' },
-        { label: 'Izin Terbit', value: '1,000+' },
+        { label: 'Izin Terbit', value: '1,200+' },
         { label: 'Tahun Pengalaman', value: '3+' },
       ]
   });
@@ -35,25 +35,25 @@ export const useMainStore = defineStore('legal', () => {
       name: 'Rezha Ranmark',
       role: 'CEO & Founder',
       image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400'
-    },
-    {
-      id: 2,
-      name: 'Sarah Amalia',
-      role: 'Head of Legal',
-      image: 'https://images.unsplash.com/photo-1573496359-0cf7429f6da3?auto=format&fit=crop&q=80&w=400'
-    },
-    {
-      id: 3,
-      name: 'Budi Santoso',
-      role: 'Senior Consultant',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400'
-    },
-    {
-      id: 4,
-      name: 'Reza Rahardian',
-      role: 'Tech Lead',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400'
     }
+    // {
+    //   id: 2,
+    //   name: 'Sarah Amalia',
+    //   role: 'Head of Legal',
+    //   image: 'https://images.unsplash.com/photo-1573496359-0cf7429f6da3?auto=format&fit=crop&q=80&w=400'
+    // },
+    // {
+    //   id: 3,
+    //   name: 'Budi Santoso',
+    //   role: 'Senior Consultant',
+    //   image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400'
+    // },
+    // {
+    //   id: 4,
+    //   name: 'Reza Rahardian',
+    //   role: 'Tech Lead',
+    //   image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400'
+    // }
   ]);
 
   const services = ref([

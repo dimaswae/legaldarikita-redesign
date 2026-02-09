@@ -1,7 +1,9 @@
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useMainStore } from '@/stores/mainStore';
+import { useHead } from '@vueuse/head';
+
 import BaseContainer from '@/components/ui/BaseContainer.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import { CheckCircle2, FileText, ArrowLeft, MessageCircle, ShieldCheck } from 'lucide-vue-next';
@@ -31,6 +33,22 @@ onMounted(() => {
     router.push('/layanan');
   }
 });
+
+// --- SEO Logic ---
+watchEffect(() => {
+  // Only run if service data is found
+  if (service.value) {
+    useHead({
+      title: service.value.title,
+      meta: [
+        { name: 'description', content: service.value.description },
+        // Open Graph
+        { property: 'og:title', content: `Biaya & Syarat ${service.value.title}` },
+        { property: 'og:description', content: service.value.longDesc ? service.value.longDesc.substring(0, 150) + '...' : service.value.description },
+      ]
+    })
+  }
+})
 </script>
 
 <template>

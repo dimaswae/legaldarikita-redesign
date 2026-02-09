@@ -15,7 +15,7 @@
   --color-highlight: #ffcc02;
   /* #1e3a8a: Biru Gelap (Bagus untuk teks atau latar belakang footer) */
   --color-dark-blue: #1e3a8a;
-  
+
   /* Backgrounds */
   --color-surface: #f8fafc;   /* Slate 50 */
   --color-surface-hover: #f1f5f9;
@@ -31,4 +31,12 @@ html {
 }
 body {
   @apply bg-surface text-primary font-sans antialiased;
+}
+
+
+/* Animation Scroll */
+.invisible-until-scroll {
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, transform;
 }

@@ -3,29 +3,26 @@ import { RouterView } from 'vue-router';
 import Navbar from '@/layouts/NavBar.vue';
 import Footer from '@/layouts/FooterLayout.vue';
 import WhatsAppButton from '@/components/ui/WhatsappButton.vue';
+import ScrollToTop from '@/components/ui/ScrollToTop.vue'
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-surface">
+  <div class="flex flex-col min-h-screen font-sans text-slate-900 bg-surface">
+    <Navbar />
 
-    <header class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md">
-      <div class="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Navbar />
-      </div>
-    </header>
-
-    <main class="grow">
-      <slot>
-        <RouterView />
-      </slot>
+    <main class="flex-grow">
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </main>
 
-    <footer>
-      <Footer />
-    </footer>
+    <Footer />
 
+    <ScrollToTop />
     <WhatsAppButton />
-  </div>
+    </div>
 </template>
 
 <style scoped>

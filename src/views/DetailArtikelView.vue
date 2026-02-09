@@ -1,7 +1,8 @@
 <script setup>
-import { computed,onMounted } from 'vue';
+import { computed,onMounted , watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useMainStore } from '@/stores/mainStore';
+import { useHead } from '@vueuse/head';
 import BaseContainer from '@/components/ui/BaseContainer.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import { Calendar, User, ArrowLeft, Share2, Facebook, Linkedin, Twitter } from 'lucide-vue-next';
@@ -33,6 +34,25 @@ onMounted(() => {
     router.push('/artikel');
   }
 });
+
+// --- SEO Logic ---
+watchEffect(() => {
+  if (article.value) {
+    useHead({
+      title: article.value.title,
+      meta: [
+        { name: 'description', content: article.value.excerpt },
+        { name: 'author', content: 'LegaLDK Editorial Team' },
+
+        // Social Media Image
+        { property: 'og:title', content: article.value.title },
+        { property: 'og:description', content: article.value.excerpt },
+        { property: 'og:image', content: article.value.thumbnail }, // Shows the blog image on WhatsApp
+        { name: 'twitter:image', content: article.value.thumbnail },
+      ]
+    })
+  }
+})
 </script>
 
 <template>
