@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 // Lazy load components for performance
 const Home = () => import('../views/HomeView.vue');
@@ -58,14 +58,13 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes,
-  // CRITICAL TASK F-03 IMPLEMENTATION:
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition; // If back button pressed, go to previous spot
     } else {
-      return { top: 0, behavior: 'smooth' }; // Always scroll to top
+      return { top: 0, behavior: 'instant' }; // Always scroll to top
     }
   }
 });

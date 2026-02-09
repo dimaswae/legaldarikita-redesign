@@ -1,6 +1,5 @@
 <script setup>
 import BaseContainer from '@/components/ui/BaseContainer.vue';
-// import { useRoute } from 'vue-router';
 
 import {
   Instagram,
@@ -11,8 +10,6 @@ import {
   Mail,
   ArrowRight
 } from 'lucide-vue-next';
-
-// const route = useRoute();
 
 const socialLinks = [
   { icon: Instagram, href: 'https://www.instagram.com/legaldarikita' },

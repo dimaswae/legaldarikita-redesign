@@ -4,7 +4,7 @@ defineProps({
   subtitle: String,
   align: {
     type: String,
-    default: 'center', // 'left', 'center', 'right'
+    default: 'center',
   }
 });
 
@@ -17,10 +17,11 @@ const alignmentClasses = {
 
 <template>
   <div class="mb-12 max-w-3xl" :class="alignmentClasses[align]">
-    <h2 v-if="title" class="text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tight">
+    <h2 v-if="title" class="header-title text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tight">
       {{ title }}
     </h2>
-    <p v-if="subtitle" class="text-lg text-gray-600 leading-relaxed">
+
+    <p v-if="subtitle" class="header-desc text-lg text-gray-600 leading-relaxed">
       {{ subtitle }}
     </p>
   </div>

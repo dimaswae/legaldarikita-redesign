@@ -1,9 +1,11 @@
 <script setup>
-import { RouterView } from 'vue-router';
+import { RouterView, useRoute } from 'vue-router';
 import Navbar from '@/layouts/NavBar.vue';
 import Footer from '@/layouts/FooterLayout.vue';
 import WhatsAppButton from '@/components/ui/WhatsappButton.vue';
-import ScrollToTop from '@/components/ui/ScrollToTop.vue'
+import ScrollToTop from '@/components/ui/ScrollToTop.vue';
+
+const route = useRoute();
 </script>
 
 <template>
@@ -11,28 +13,12 @@ import ScrollToTop from '@/components/ui/ScrollToTop.vue'
     <Navbar />
 
     <main class="flex-grow">
-      <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
-          <component :is="Component" />
-        </transition>
-      </router-view>
+      <router-view :key="route.fullPath" />
     </main>
 
     <Footer />
 
     <ScrollToTop />
     <WhatsAppButton />
-    </div>
+  </div>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.25s ease-in-out;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

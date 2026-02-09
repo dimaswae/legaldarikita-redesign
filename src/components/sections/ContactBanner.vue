@@ -24,7 +24,7 @@ onMounted(() => {
       ease: 'none',
       scrollTrigger: {
         trigger: '.contact-banner-trigger',
-        scrub: true, // Smooth parallax effect
+        scrub: true,
         start: 'top bottom',
         end: 'bottom top',
       }

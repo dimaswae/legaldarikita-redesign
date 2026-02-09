@@ -42,7 +42,6 @@ watchEffect(() => {
       title: service.value.title,
       meta: [
         { name: 'description', content: service.value.description },
-        // Open Graph
         { property: 'og:title', content: `Biaya & Syarat ${service.value.title}` },
         { property: 'og:description', content: service.value.longDesc ? service.value.longDesc.substring(0, 150) + '...' : service.value.description },
       ]

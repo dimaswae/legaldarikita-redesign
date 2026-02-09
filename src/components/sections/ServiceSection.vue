@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue';
-import { useMainStore } from '@/stores/mainStore'; // Access the store
+import { useMainStore } from '@/stores/mainStore';
 import BaseContainer from '@/components/ui/BaseContainer.vue';
 import SectionHeader from '@/components/ui/SectionHeader.vue';
 import BaseCard from '@/components/ui/BaseCard.vue';
@@ -24,7 +24,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 const store = useMainStore();
 
-// Map string icon names from JSON to actual components
 const iconMap = {
   'User': User,
   'Building2': Building2,
@@ -39,22 +38,42 @@ const iconMap = {
 };
 
 onMounted(() => {
-    gsap.fromTo('.service-card-anim',
+  // Create a Timeline
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#layanan',
+      start: 'top 80%',
+      toggleActions: 'play none none none'
+    }
+  });
+
+  // Animate Title
+  tl.from('#layanan .header-title', {
+    y: 50,
+    opacity: 0,
+    duration: 1.2,
+    ease: 'power3.out'
+  })
+
+  // Animate Description
+  .from('#layanan .header-desc', {
+    y: 30,
+    opacity: 0,
+    duration: 1.2,
+    ease: 'power3.out'
+  }, '-=0.8')
+
+  // Animate Cards
+  .fromTo('.service-card-anim',
+    { y: 100, opacity: 0 },
     {
-      y: 60,
-      opacity: 0
-    },
-    {
-      scrollTrigger: {
-        trigger: '#layanan',
-        start: 'top 85%', // Trigger slightly earlier for better UX
-      },
       y: 0,
       opacity: 1,
-      duration: 0.8,
-      stagger: 0.1, // 100ms delay between each card
+      duration: 1.5,
+      stagger: 0.2,
       ease: 'power2.out'
-    }
+    },
+    '-=1.0'
   );
 });
 </script>

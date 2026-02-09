@@ -17,7 +17,10 @@ useHead({
     { property: 'og:type', content: 'website' },
     { property: 'og:site_name', content: 'Legaldarikita' },
     { property: 'og:locale', content: 'id_ID' },
-    // Twitter Card
+    { property: 'og:title', content: 'LegaLDK - Jasa Legalitas & Perizinan Bisnis Terpercaya' },
+    { property: 'og:description', content: 'Urus izin PT, CV, NIB, dan Legalitas lainnya dengan mudah melalui LegaLDK. Solusi cepat, aman, dan terpercaya untuk kebutuhan legalitas bisnis Anda.' },
+    { property: 'og:url', content: 'https://legaldarikita.com' },
+    { property: 'og:image', content: 'https://legaldarikita.com/og-image.jpg' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:site', content: '@Legaldarikita' },
   ],

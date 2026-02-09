@@ -31,7 +31,7 @@ const iconMap = {
 onMounted(async () => {
   await nextTick();
 
-  // --- 1. Header Animation ---
+  // --- Header Animation ---
   const tl = gsap.timeline();
 
   tl.from('.layanan-hero-bg', {
@@ -52,7 +52,7 @@ onMounted(async () => {
     ease: 'power3.out'
   }, '-=0.6');
 
-  // --- 2. Service Grid Animation ---
+  // --- Service Grid Animation ---
   gsap.fromTo('.layanan-card-anim',
     {
       y: 60,
@@ -120,7 +120,7 @@ onMounted(async () => {
               <span class="font-bold text-secondary">{{ service.price }}</span>
 
               <router-link
-                :to="`/layanan/${service.id}`"
+                :to="`/layanan/${service.slug}`"
                 class="inline-flex items-center text-sm font-semibold text-slate-400 group-hover:text-primary transition-colors"
               >
                 Detail

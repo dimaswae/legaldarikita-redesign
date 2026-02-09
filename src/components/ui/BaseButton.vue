@@ -49,7 +49,7 @@ const classes = computed(() => {
   ].join(' ');
 });
 
-// Determine tag type (RouterLink or Button)
+// menentukan tag yang akan digunakan
 const tag = computed(() => {
   if (props.to) return 'router-link';
   if (props.href) return 'a';

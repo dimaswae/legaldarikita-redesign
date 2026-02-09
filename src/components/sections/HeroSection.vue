@@ -53,7 +53,7 @@ onMounted(() => {
     duration: 0.8,
     ease: 'power3.out'
   }, '-=0.8')
-  // Checklist - Stagger In (Ripple)
+  // Checklist
   .from('.hero-benefit', {
     x: -20,
     opacity: 0,
@@ -61,7 +61,7 @@ onMounted(() => {
     stagger: 0.1,
     ease: 'power2.out'
   }, '-=0.6')
-  // Buttons - Pop In (Bounce)
+  // Buttons
   .from('.hero-btn', {
     y: 20,
     opacity: 0,
@@ -85,7 +85,7 @@ onMounted(() => {
     ease: 'power3.out'
   });
 
-  // Floating Card - Pop Up last
+  // Floating Card
   gsap.from('.hero-float-card', {
     y: 50,
     opacity: 0,
@@ -161,8 +161,8 @@ onMounted(() => {
 
           <div class="relative bg-white p-4 rounded-2xl shadow-2xl border border-slate-100 transform rotate-2 hover:rotate-0 transition-transform duration-500">
             <img
-              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80"
-              alt="Team Meeting"
+              src="@/assets/logo-legaldk.png"
+              alt="Logo LegalDK"
               class="rounded-xl object-cover w-full h-[500px]"
             />
 

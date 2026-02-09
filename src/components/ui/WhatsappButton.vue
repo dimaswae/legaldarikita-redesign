@@ -7,7 +7,7 @@ const store = useMainStore();
 
 // Dynamic WA Link logic
 const waLink = computed(() => {
-  // Safe access to phone number, fallback to dummy if undefined
+  // Akses nomor dari store
   const rawPhone = store.contact?.phone || store.contact?.phone || '628129998888';
   const phone = rawPhone.replace(/\D/g, ''); // Remove non-digits
 

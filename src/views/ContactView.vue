@@ -1,11 +1,14 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
 import { useMainStore } from '@/stores/mainStore';
 import BaseContainer from '@/components/ui/BaseContainer.vue';
-import PageHeader from '@/components/ui/PageHeader.vue'; // Using your existing component
 import BaseButton from '@/components/ui/BaseButton.vue';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-vue-next';
 
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 const store = useMainStore();
 
 // Form State
@@ -18,47 +21,133 @@ const form = ref({
 
 const isSubmitting = ref(false);
 
-// Demo Submit Handler
 const handleSubmit = () => {
   isSubmitting.value = true;
-
-  // Simulate API delay
   setTimeout(() => {
     alert(`Terima kasih, ${form.value.name}! Pesan Anda telah terkirim.`);
     isSubmitting.value = false;
-    // Reset form
     form.value = { name: '', email: '', subject: '', message: '' };
   }, 1000);
 };
 
-// Icon mapping for loop
+// Data
 const contactDetails = [
   { icon: MapPin, label: 'Alamat Kantor', value: store.contact.address },
   { icon: Phone, label: 'Telepon / WhatsApp', value: store.contact.phone, isLink: true, href: `tel:${store.contact.phone}` },
   { icon: Mail, label: 'Email', value: store.contact.email, isLink: true, href: `mailto:${store.contact.email}` },
   { icon: Clock, label: 'Jam Operasional', value: store.contact.workingHours }
 ];
+
+// --- GSAP Animation ---
+onMounted(async () => {
+  await nextTick();
+
+  // Timeline
+  const tl = gsap.timeline();
+
+  tl.fromTo('.contact-hero-bg',
+    { scale: 1.1 },
+    { scale: 1, duration: 1.5, ease: 'power1.out' }
+  )
+  .fromTo('.contact-hero-title',
+    { y: 30, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 1, ease: 'power3.out' },
+    '-=1'
+  )
+  .fromTo('.contact-hero-subtitle',
+    { y: 20, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 0.8, ease: 'power3.out' },
+    '-=0.6'
+  );
+
+  // Contact Cards
+  gsap.fromTo('.contact-card-anim',
+    { x: -30, autoAlpha: 0 },
+    {
+      scrollTrigger: { trigger: '.contact-section-trigger', start: 'top 85%' },
+      x: 0,
+      autoAlpha: 1,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power2.out'
+    }
+  );
+
+  // Map
+  gsap.fromTo('.contact-map-anim',
+    { scale: 0.95, autoAlpha: 0 },
+    {
+      scrollTrigger: { trigger: '.contact-map-anim', start: 'top 90%' },
+      scale: 1,
+      autoAlpha: 1,
+      duration: 1,
+      ease: 'power2.out'
+    }
+  );
+
+  // Form Container
+  gsap.fromTo('.contact-form-container-anim',
+    { x: 30, autoAlpha: 0 },
+    {
+      scrollTrigger: { trigger: '.contact-section-trigger', start: 'top 85%' },
+      x: 0,
+      autoAlpha: 1,
+      duration: 1,
+      ease: 'power3.out'
+    }
+  );
+
+  // Form Inputs
+  gsap.fromTo('.form-input-anim',
+    { y: 20, autoAlpha: 0 },
+    {
+      scrollTrigger: { trigger: '.contact-section-trigger', start: 'top 80%' },
+      y: 0,
+      autoAlpha: 1,
+      duration: 0.6,
+      stagger: 0.1,
+      delay: 0.3, 
+      ease: 'back.out(1.2)'
+    }
+  );
+});
 </script>
 
 <template>
   <div>
-    <PageHeader
-      title="Hubungi Kami"
-      subtitle="Siap membantu legalitas bisnis Anda. Konsultasikan kebutuhan Anda sekarang."
-    />
 
-    <section class="py-20 bg-surface">
+    <section class="relative h-[400px] md:h-[500px] flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+          alt="Contact Support"
+          class="contact-hero-bg w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-slate-900/80"></div>
+      </div>
+
+      <BaseContainer class="relative z-10 text-center text-white">
+        <h1 class="contact-hero-title text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+          Hubungi Kami
+        </h1>
+        <p class="contact-hero-subtitle text-lg md:text-xl text-blue-100 max-w-2xl mx-auto font-light">
+          Siap membantu legalitas bisnis Anda. Konsultasikan kebutuhan Anda sekarang.
+        </p>
+      </BaseContainer>
+    </section>
+
+    <section class="contact-section-trigger py-20 bg-surface">
       <BaseContainer>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
           <div class="space-y-8">
-            <h2 class="text-2xl font-bold text-primary mb-6">Informasi Kontak</h2>
+            <h2 class="contact-card-anim text-2xl font-bold text-primary mb-6">Informasi Kontak</h2>
 
             <div class="space-y-6">
               <div
                 v-for="(item, index) in contactDetails"
                 :key="index"
-                class="flex items-start gap-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
+                class="contact-card-anim flex items-start gap-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div class="bg-blue-50 p-3 rounded-lg text-secondary shrink-0">
                   <component :is="item.icon" :size="24" />
@@ -77,10 +166,10 @@ const contactDetails = [
             </div>
 
             <div class="mt-8">
-              <h3 class="text-lg font-bold text-primary mb-4">Lokasi Kami</h3>
+              <h3 class="contact-map-anim text-lg font-bold text-primary mb-4">Lokasi Kami</h3>
               <iframe
                 :src="store.contact.mapUrl"
-                class="w-full h-80 rounded-2xl shadow-md border border-slate-200"
+                class="contact-map-anim w-full h-80 rounded-2xl shadow-md border border-slate-200"
                 style="border:0;"
                 allowfullscreen=""
                 loading="lazy"
@@ -89,13 +178,13 @@ const contactDetails = [
             </div>
           </div>
 
-          <div class="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-slate-100 h-fit sticky top-24">
+          <div class="contact-form-container-anim bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-slate-100 h-fit sticky top-24">
             <h2 class="text-2xl font-bold text-primary mb-2">Kirim Pesan</h2>
             <p class="text-slate-500 mb-8">Isi formulir di bawah ini dan tim kami akan segera menghubungi Anda.</p>
 
             <form @submit.prevent="handleSubmit" class="flex flex-col gap-6">
 
-              <div>
+              <div class="form-input-anim">
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Lengkap</label>
                 <input
                   v-model="form.name"
@@ -106,7 +195,7 @@ const contactDetails = [
                 />
               </div>
 
-              <div>
+              <div class="form-input-anim">
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Alamat Email</label>
                 <input
                   v-model="form.email"
@@ -117,7 +206,7 @@ const contactDetails = [
                 />
               </div>
 
-              <div>
+              <div class="form-input-anim">
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Subjek</label>
                 <select
                   v-model="form.subject"
@@ -132,7 +221,7 @@ const contactDetails = [
                 </select>
               </div>
 
-              <div>
+              <div class="form-input-anim">
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Pesan</label>
                 <textarea
                   v-model="form.message"
@@ -143,18 +232,20 @@ const contactDetails = [
                 ></textarea>
               </div>
 
-              <BaseButton
-                type="submit"
-                variant="primary"
-                size="lg"
-                class="w-full mt-2"
-                :disabled="isSubmitting"
-              >
-                <span v-if="!isSubmitting" class="flex items-center justify-center gap-2">
-                  Kirim Pesan <Send :size="18" />
-                </span>
-                <span v-else>Mengirim...</span>
-              </BaseButton>
+              <div class="form-input-anim">
+                <BaseButton
+                  type="submit"
+                  variant="primary"
+                  size="lg"
+                  class="w-full mt-2"
+                  :disabled="isSubmitting"
+                >
+                  <span v-if="!isSubmitting" class="flex items-center justify-center gap-2">
+                    Kirim Pesan <Send :size="18" />
+                  </span>
+                  <span v-else>Mengirim...</span>
+                </BaseButton>
+              </div>
 
             </form>
           </div>

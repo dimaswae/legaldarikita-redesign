@@ -13,12 +13,12 @@ gsap.registerPlugin(ScrollTrigger);
 const store = useMainStore();
 
 onMounted(async () => {
-  await nextTick(); // Ensure DOM is ready
+  await nextTick(); // Wait DOM
 
   gsap.fromTo('.article-card-anim',
     {
       y: 60,
-      autoAlpha: 0 // Use autoAlpha for better performance than opacity
+      autoAlpha: 0
     },
     {
       scrollTrigger: {
@@ -28,7 +28,7 @@ onMounted(async () => {
       y: 0,
       autoAlpha: 1,
       duration: 0.8,
-      stagger: 0.15, // This will now ripple the cards nicely
+      stagger: 0.15, 
       ease: 'power2.out'
     }
   );

@@ -7,7 +7,7 @@ const cardRef = ref(null);
 const onEnter = () => {
   gsap.to(cardRef.value, {
     y: -8, // Lift up   8px
-    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)', // Tailwind 'shadow-xl' equivalent
+    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)', // Tailwind 'shadow-xl' 
     duration: 0.3,
     ease: 'power2.out'
   });
@@ -16,7 +16,7 @@ const onEnter = () => {
 const onLeave = () => {
   gsap.to(cardRef.value, {
     y: 0, // Reset
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)', // Tailwind 'shadow-sm' equivalent
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)', // Tailwind 'shadow-sm'
     duration: 0.3,
     ease: 'power2.out'
   });
