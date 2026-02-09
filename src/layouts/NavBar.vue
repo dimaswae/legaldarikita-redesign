@@ -11,7 +11,7 @@ const route = useRoute();
 
 const navLinks = [
   { name: 'Home', path: '/' },
-  { name: 'About Us', path: '/tentang-kami' },
+  { name: 'Tentang Kami', path: '/tentang-kami' },
   { name: 'Layanan', path: '/layanan' },
   { name: 'Artikel', path: '/artikel' },
 ];
