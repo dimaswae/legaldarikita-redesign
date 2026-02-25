@@ -14,3 +14,9 @@ app.use(router)
 app.use(head)
 
 app.mount('#app')
+
+/**
+ * Developed by Dimas Rizqia Hidayat
+ * Internship Project - PT ICommits Karya Solusi
+ * UIN Sunan Gunung Djati Bandung
+ */

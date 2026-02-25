@@ -2,7 +2,21 @@
 
 Selamat datang di repositori **legaldarikita-redesign**! Ini adalah website modern untuk layanan legalitas dan perizinan bisnis yang dirancang dengan teknologi terkini untuk memberikan pengalaman pengguna yang optimal.
 
+[![Live Demo](https://img.shields.io/badge/demo-live%20website-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://dimaswae.github.io/legaldarikita-redesign/)
+
 ---
+
+## 📝 Informasi Pengembang
+Proyek ini dikembangkan oleh Dimas Rizqia Hidayat sebagai bagian dari tugas Kerja Praktik (Magang) di PT ICommits Karya Solusi.
+
+- Nama: Dimas Rizqia Hidayat
+- NIM : 1237050073
+- Instansi: UIN Sunan Gunung Djati Bandung
+- Posisi: Web Developer Intern
+- Periode Magang: Januari - Februari 2026
+
+---
+
 
 ## 📋 Daftar Isi
 
@@ -21,16 +35,16 @@ Selamat datang di repositori **legaldarikita-redesign**! Ini adalah website mode
 
 ---
 
-## 🎯 Tentang Proyek
+## 🎯 Tentang Proyek 
 
-**LegaLDK** adalah platform digital yang menyediakan layanan jasa legalitas dan perizinan bisnis dengan pendekatan yang mudah, aman, dan terpercaya. Kami membantu bisnis Anda mengurus:
+**LegaLDK** adalah platform digital yang menyediakan layanan jasa legalitas dan perizinan bisnis dengan pendekatan yang mudah, aman, dan terpercaya. Saya membantu bisnis Anda mengurus:
 
 - Perizinan Perseroan Terbatas (PT)
 - Perizinan Commanditaire Vennootschap (CV)
 - Nomor Induk Berusaha (NIB)
 - Legalitas dan Sertifikasi Bisnis lainnya
 
-Proyek redesign ini adalah versi modern dari website kami yang dibangun dengan Vue 3 dan Vite untuk performa maksimal.
+Proyek redesign ini adalah versi modern dari website Saya yang dibangun dengan Vue 3 dan Vite untuk performa maksimal.
 
 ---
 
@@ -40,7 +54,7 @@ Proyek redesign ini adalah versi modern dari website kami yang dibangun dengan V
 - 📋 **Layanan** - Daftar lengkap layanan legalitas bisnis
 - 📰 **Artikel** - Blog informatif tentang perizinan dan legalitas
 - 📞 **Kontak** - Formulir kontak dan informasi komunikasi
-- 👥 **Tentang Kami** - Informasi perusahaan dan kredibilitas
+- 👥 **Tentang Saya** - Informasi perusahaan dan kredibilitas
 - 🎨 **Desain Responsif** - Optimal di semua ukuran perangkat
 - 🚀 **Performa Cepat** - Built dengan Vite untuk loading ultra-cepat
 - 🔍 **SEO Optimized** - Meta tags dan struktur semantic yang baik
@@ -195,7 +209,7 @@ legaldarikita-redesign/
 │   │   ├── DetailArtikelView.vue
 │   │   ├── ContactView.vue
 │   │   ├── DetailLayananView.vue
-│   │   ├── TentangKamiView.vue
+│   │   ├── TentangSayaView.vue
 │   │   └── NotFoundView.vue
 │   ├── router/                  # Vue Router configuration
 │   │   └── index.js
@@ -302,7 +316,7 @@ Dokumentasi lengkap: https://vite.dev/config/
 
 ## 🤝 Kontribusi
 
-Kami menerima kontribusi dari komunitas! Untuk berkontribusi:
+Saya menerima kontribusi dari komunitas! Untuk berkontribusi:
 
 ### Langkah-Langkah
 
@@ -360,9 +374,8 @@ Proyek ini dilindungi oleh lisensi [Masukkan Jenis Lisensi]. Untuk detail lebih 
 
 Jika Anda memiliki pertanyaan atau saran:
 
-- 📧 Email: [email-support]
 - 🌐 Website: https://legaldarikita.com
-- 📱 WhatsApp: [nomor-whatsapp]
+- 📱 WhatsApp: 085157126608
 - 🐛 Report Bug: Buka issue di GitHub
 
 ---
@@ -380,43 +393,6 @@ Jika Anda memiliki pertanyaan atau saran:
 
 ## 🎉 Kata Penutup
 
-Terima kasih telah menggunakan LegaLDK! Kami berkomitmen untuk terus meningkatkan layanan dan platform kami.
+Terima kasih telah menggunakan LegaLDK! Saya berkomitmen untuk terus meningkatkan layanan dan platform Saya.
 
 **Happy coding!** 🚀
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
