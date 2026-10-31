@@ -108,12 +108,12 @@ onMounted(() => {
 
         <div class="space-y-8">
 
-          <div class="hero-badge mt-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium"> 
-            <span class="relative flex h-2 w-2"> 
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span> 
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span> 
-            </span> 
-            Solusi Legalitas No. 1 di Indonesia 
+          <div class="hero-badge mt-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            Solusi Legalitas No. 1 di Indonesia
           </div>
 
           <h1 class="hero-title text-4xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight">
